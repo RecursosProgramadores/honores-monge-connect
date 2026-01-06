@@ -1,14 +1,17 @@
 import { Layout } from "@/components/layout/Layout";
-import { Users, Award, Heart, BookOpen } from "lucide-react";
-import campusImage from "@/assets/campus-exterior.jpg";
+import { Award, Heart, BookOpen, Users } from "lucide-react";
+import campusImage from "@/assets/sedeizaquirre.png";
+import staffImage1 from "@/assets/director.jpg";
+import staffImage2 from "@/assets/pedagoga.jpg";
+import staffImage3 from "@/assets/coordinador.jpg";
 
 const team = [
-  { name: "Director General", role: "Dirección", image: null },
-  { name: "Subdirector Académico", role: "Coordinación Pedagógica", image: null },
-  { name: "Coordinador de Inicial", role: "Nivel Inicial", image: null },
-  { name: "Coordinador de Primaria", role: "Nivel Primaria", image: null },
-  { name: "Coordinador de Secundaria", role: "Nivel Secundaria", image: null },
-  { name: "Psicóloga Educativa", role: "Bienestar Estudiantil", image: null },
+  { name: "Director General", role: "Dirección", image: staffImage1 },
+  { name: "Subdirector Académico", role: "Coordinación Pedagógica", image: staffImage2 },
+  { name: "Coordinador de Inicial", role: "Nivel Inicial", image: staffImage3 },
+  { name: "Coordinador de Primaria", role: "Nivel Primaria", image: staffImage1 },
+  { name: "Coordinador de Secundaria", role: "Nivel Secundaria", image: staffImage2 },
+  { name: "Psicóloga Educativa", role: "Bienestar Estudiantil", image: staffImage3 },
 ];
 
 const Campus = () => {
@@ -18,14 +21,13 @@ const Campus = () => {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
           <img src={campusImage} alt="Campus Honores Monge" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/90 to-foreground/60" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-6">
+          <div className="max-w-2xl bg-foreground/40 backdrop-blur-md rounded-3xl p-8 shadow-2xl">
+            <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 drop-shadow-lg">
               Nuestro Campus
             </h1>
-            <p className="text-xl text-primary-foreground/90">
+            <p className="text-xl text-white drop-shadow-md">
               Un espacio diseñado para el aprendizaje, la creatividad y el desarrollo integral de nuestros estudiantes.
             </p>
           </div>
@@ -78,14 +80,19 @@ const Campus = () => {
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             Un equipo de profesionales dedicados a la formación integral de nuestros estudiantes
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {team.map((member, index) => (
-              <div key={index} className="card-level text-center">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-hero flex items-center justify-center">
-                  <Users className="w-10 h-10 text-primary-foreground" />
+              <div key={index} className="card-level overflow-hidden group hover:shadow-elevated transition-all duration-300">
+                <div className="relative h-64 -mx-8 -mt-8 mb-6 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/40 to-transparent" />
                 </div>
-                <h3 className="font-display font-bold text-lg mb-1">{member.name}</h3>
-                <p className="text-sm text-muted-foreground">{member.role}</p>
+                <h3 className="font-display font-bold text-xl mb-2 text-center">{member.name}</h3>
+                <p className="text-sm text-muted-foreground text-center">{member.role}</p>
               </div>
             ))}
           </div>

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Baby, BookOpen, GraduationCap } from "lucide-react";
-import nivelInicial from "@/assets/nivel-inicial.jpg";
-import nivelPrimaria from "@/assets/nivel-primaria.jpg";
-import nivelSecundaria from "@/assets/nivel-secundaria.jpg";
+import nivelInicial from "@/assets/inicial2.jpg";
+import nivelPrimaria from "@/assets/primaria2.jpg";
+import nivelSecundaria from "@/assets/secundaria2.jpeg";
 
 const levels = [
   {

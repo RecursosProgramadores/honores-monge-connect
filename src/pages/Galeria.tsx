@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { X } from "lucide-react";
-import heroImage from "@/assets/hero-students.jpg";
-import nivelInicial from "@/assets/nivel-inicial.jpg";
-import nivelPrimaria from "@/assets/nivel-primaria.jpg";
-import nivelSecundaria from "@/assets/nivel-secundaria.jpg";
-import campusImage from "@/assets/campus-exterior.jpg";
+import heroImage from "@/assets/galeria1.jpg";
+import nivelInicial from "@/assets/galeria2.jpeg";
+import nivelPrimaria from "@/assets/galeria3.jpg";
+import nivelSecundaria from "@/assets/galeria4.jpeg";
+import campusImage from "@/assets/galeria5.jpeg";
 
 const categories = ["Todos", "Eventos", "Actividades", "Instalaciones"];
 

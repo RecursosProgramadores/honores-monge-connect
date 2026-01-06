@@ -1,9 +1,9 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { ArrowRight, Baby, BookOpen, GraduationCap, CheckCircle, Users, Heart, Target } from "lucide-react";
-import nivelInicial from "@/assets/nivel-inicial.jpg";
-import nivelPrimaria from "@/assets/nivel-primaria.jpg";
-import nivelSecundaria from "@/assets/nivel-secundaria.jpg";
+import nivelInicial from "@/assets/inicial2.jpg";
+import nivelPrimaria from "@/assets/primaria2.jpg";
+import nivelSecundaria from "@/assets/secundaria2.jpeg";
 
 const levels = [
   {
@@ -42,6 +42,15 @@ const pillars = [
 ];
 
 const Educacion = () => {
+  const handleLevelClick = () => {
+    // Scroll inmediato al inicio
+    window.scrollTo(0, 0);
+    // Alternativa con timeout para asegurar que funcione después de la navegación
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  };
+
   return (
     <Layout>
       {/* Hero */}
@@ -88,7 +97,7 @@ const Educacion = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {levels.map((level) => (
-              <Link key={level.name} to={level.path} className="card-level group">
+              <Link key={level.name} to={level.path} onClick={handleLevelClick} className="card-level group">
                 <div className="relative h-48 -mx-8 -mt-8 mb-6 overflow-hidden rounded-t-3xl">
                   <img
                     src={level.image}

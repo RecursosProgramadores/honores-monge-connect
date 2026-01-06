@@ -2,13 +2,17 @@ import { Link } from "react-router-dom";
 import { GraduationCap, Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 
 export function Footer() {
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="bg-foreground text-primary-foreground">
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-3 mb-6">
+            <Link to="/" onClick={handleLinkClick} className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-2xl bg-gradient-hero flex items-center justify-center">
                 <GraduationCap className="w-7 h-7" />
               </div>
@@ -37,6 +41,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.path}
+                    onClick={handleLinkClick}
                     className="text-sm opacity-80 hover:opacity-100 hover:underline transition-all"
                   >
                     {link.name}
