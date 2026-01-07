@@ -41,23 +41,21 @@ export function Navbar() {
     
     // Si ya estamos en la página de educación
     if (location.pathname === "/educacion") {
-      // Hacer scroll a la sección de niveles y abrir dropdown
+      // Hacer scroll a la sección de niveles
       setTimeout(() => {
         const levelsSection = document.querySelector('[class*="py-20 bg-muted"]');
         if (levelsSection) {
           levelsSection.scrollIntoView({ behavior: "smooth", block: "center" });
         }
       }, 100);
-      // Mantener el dropdown abierto
-      setOpenDropdown("Educación");
     } else {
       // Navegar a la página de educación
       navigate("/educacion");
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }, 100);
-      setOpenDropdown(null);
     }
+    setOpenDropdown(null);
   };
 
   const handleAdmisionClick = () => {
@@ -92,12 +90,11 @@ export function Navbar() {
                 key={item.name}
                 className="relative group"
                 onMouseEnter={() => item.dropdown && setOpenDropdown(item.name)}
-                onMouseLeave={() => item.dropdown && item.name !== "Educación" && setOpenDropdown(null)}
+                onMouseLeave={() => item.dropdown && setOpenDropdown(null)}
               >
                 <Link
                   to={item.path}
                   onClick={item.name === "Educación" ? handleEducacionClick : handleNavClick}
-                  onMouseEnter={() => item.name === "Educación" && location.pathname === "/educacion" && setOpenDropdown("Educación")}
                   className={cn(
                     "flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-all",
                     isActive(item.path)
@@ -116,7 +113,10 @@ export function Navbar() {
                       <Link
                         key={subItem.name}
                         to={subItem.path}
-                        onClick={handleNavClick}
+                        onClick={() => {
+                          handleNavClick();
+                          setOpenDropdown(null);
+                        }}
                         className={cn(
                           "block px-4 py-2 rounded-xl text-sm transition-colors",
                           isActive(subItem.path)

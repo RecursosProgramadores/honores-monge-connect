@@ -25,10 +25,10 @@ const App = () => (
       <HashRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/educación" element={<Educacion />} />
-          <Route path="/educación/inicial" element={<NivelInicial />} />
-          <Route path="/educación/primaria" element={<NivelPrimaria />} />
-          <Route path="/educación/secundaria" element={<NivelSecundaria />} />
+          <Route path="/educacion" element={<Educacion />} />
+          <Route path="/educacion/inicial" element={<NivelInicial />} />
+          <Route path="/educacion/primaria" element={<NivelPrimaria />} />
+          <Route path="/educacion/secundaria" element={<NivelSecundaria />} />
           <Route path="/campus" element={<Campus />} />
           <Route path="/sedes" element={<Sedes />} />
           <Route path="/galeria" element={<Galeria />} />
