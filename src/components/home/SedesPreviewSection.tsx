@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { MapPin, Phone, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Navigation } from "lucide-react";
 import campusImage from "@/assets/campus-exterior.jpg";
 
 const sedes = [
@@ -7,12 +6,14 @@ const sedes = [
     name: "Sede Breña",
     address: "Jirón Huancabamba N°1120-1130",
     phone: "01 5018412",
+    googleMapsUrl: "https://www.google.com/maps/place/Jirón+Huancabamba+1120,+Breña+15082/@-12.0595,-77.0502,17z",
     features: ["Ubicación céntrica", "Amplias instalaciones", "Fácil acceso"],
   },
   {
     name: "Sede Izaguirre",
     address: "Av. Carlos Izaguirre mz b lt 11,12,13,14",
     phone: "016515072",
+    googleMapsUrl: "https://www.google.com/maps/place/Av.+Carlos+Izaguirre,+San+Martín+de+Porres+15108/@-11.9933,-77.0803,17z",
     features: ["Campus moderno", "Áreas verdes", "Infraestructura nueva"],
   },
 ];
@@ -58,7 +59,7 @@ export function SedesPreviewSection() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {sede.features.map((feature) => (
                   <span
                     key={feature}
@@ -68,19 +69,18 @@ export function SedesPreviewSection() {
                   </span>
                 ))}
               </div>
+
+              <a
+                href={sede.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:scale-105 transition-transform w-full justify-center"
+              >
+                <Navigation className="w-4 h-4" />
+                Ver Ubicación
+              </a>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <Link
-            to="/sedes"
-            className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
-          >
-            Ver todas las sedes
-            <ArrowRight className="w-5 h-5" />
-          </Link>
         </div>
       </div>
     </section>

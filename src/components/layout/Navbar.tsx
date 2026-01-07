@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -25,14 +25,52 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path: string) => location.pathname === path;
 
   // Función para hacer scroll al inicio al navegar
-  const handleNavClick = () => {
+  const handleNavClick = (path?: string) => {
+    // Si hacemos clic en Educación y ya estamos en esa página
+    if (path === "/educacion" && location.pathname === "/educacion") {
+      // Hacer scroll a la sección de niveles
+      setTimeout(() => {
+        const levelsSection = document.querySelector('[class*="py-20 bg-muted"]');
+        if (levelsSection) {
+          levelsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+      setOpenDropdown(null);
+      return;
+    }
+    
     window.scrollTo({ top: 0, behavior: "smooth" });
     setIsOpen(false);
     setOpenDropdown(null);
+  };
+
+  const handleEducacionClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    
+    // Si ya estamos en la página de educación
+    if (location.pathname === "/educacion") {
+      // Hacer scroll a la sección de niveles y abrir dropdown
+      setTimeout(() => {
+        const levelsSection = document.querySelector('[class*="py-20 bg-muted"]');
+        if (levelsSection) {
+          levelsSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 100);
+      // Mantener el dropdown abierto
+      setOpenDropdown("Educación");
+    } else {
+      // Navegar a la página de educación
+      navigate("/educacion");
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+      setOpenDropdown(null);
+    }
   };
 
   const handleAdmisionClick = () => {
@@ -48,7 +86,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" onClick={handleNavClick} className="flex items-center gap-3 group">
+          <Link to="/" onClick={() => handleNavClick()} className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow-primary group-hover:scale-110 transition-transform">
               <GraduationCap className="w-7 h-7 text-primary-foreground" />
             </div>
@@ -67,11 +105,12 @@ export function Navbar() {
                 key={item.name}
                 className="relative group"
                 onMouseEnter={() => item.dropdown && setOpenDropdown(item.name)}
-                onMouseLeave={() => setOpenDropdown(null)}
+                onMouseLeave={() => item.dropdown && item.name !== "Educación" && setOpenDropdown(null)}
               >
                 <Link
                   to={item.path}
-                  onClick={handleNavClick}
+                  onClick={item.name === "Educación" ? handleEducacionClick : () => handleNavClick()}
+                  onMouseEnter={() => item.name === "Educación" && location.pathname === "/educacion" && setOpenDropdown("Educación")}
                   className={cn(
                     "flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-all",
                     isActive(item.path)
@@ -90,7 +129,7 @@ export function Navbar() {
                       <Link
                         key={subItem.name}
                         to={subItem.path}
-                        onClick={handleNavClick}
+                        onClick={() => handleNavClick()}
                         className={cn(
                           "block px-4 py-2 rounded-xl text-sm transition-colors",
                           isActive(subItem.path)

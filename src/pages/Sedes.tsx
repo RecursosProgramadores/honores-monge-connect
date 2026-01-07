@@ -1,5 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
-import { MapPin, Phone, MessageCircle, Clock, CheckCircle } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Clock, CheckCircle, Navigation } from "lucide-react";
 
 const sedes = [
   {
@@ -12,6 +12,7 @@ const sedes = [
     description: "Nuestra sede principal en el corazón de Breña, con fácil acceso y amplias instalaciones para todos los niveles educativos.",
     features: ["Ubicación céntrica", "Fácil acceso en transporte público", "Amplias aulas", "Laboratorio de cómputo", "Patio recreativo"],
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.9661961830774!2d-77.05!3d-12.06!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAzJzM2LjAiUyA3N8KwMDMnMDAuMCJX!5e0!3m2!1ses!2spe!4v1234567890",
+    googleMapsUrl: "https://www.google.com/maps/place/Jirón+Huancabamba+1120,+Breña+15082/@-12.0595,-77.0502,17z",
   },
   {
     name: "Sede Izaguirre",
@@ -23,6 +24,7 @@ const sedes = [
     description: "Campus moderno con infraestructura de última generación, diseñado para brindar la mejor experiencia educativa.",
     features: ["Campus moderno", "Áreas verdes", "Infraestructura nueva", "Biblioteca", "Canchas deportivas"],
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.5!2d-77.08!3d-11.99!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDU5JzI0LjAiUyA3N8KwMDQnNDguMCJX!5e0!3m2!1ses!2spe!4v1234567890",
+    googleMapsUrl: "https://www.google.com/maps/place/Av.+Carlos+Izaguirre,+San+Martín+de+Porres+15108/@-11.9933,-77.0803,17z",
   },
 ];
 
@@ -104,8 +106,17 @@ const Sedes = () => {
                     {/* CTA Buttons */}
                     <div className="flex flex-wrap gap-4">
                       <a
-                        href={`tel:${sede.phone}`}
+                        href={sede.googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:scale-105 transition-transform"
+                      >
+                        <Navigation className="w-4 h-4" />
+                        Ver en Google Maps
+                      </a>
+                      <a
+                        href={`tel:${sede.phone}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-muted text-foreground rounded-full font-medium hover:scale-105 transition-transform"
                       >
                         <Phone className="w-4 h-4" />
                         Llamar
