@@ -30,20 +30,7 @@ export function Navbar() {
   const isActive = (path: string) => location.pathname === path;
 
   // Función para hacer scroll al inicio al navegar
-  const handleNavClick = (path?: string) => {
-    // Si hacemos clic en Educación y ya estamos en esa página
-    if (path === "/educacion" && location.pathname === "/educacion") {
-      // Hacer scroll a la sección de niveles
-      setTimeout(() => {
-        const levelsSection = document.querySelector('[class*="py-20 bg-muted"]');
-        if (levelsSection) {
-          levelsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
-      setOpenDropdown(null);
-      return;
-    }
-    
+  const handleNavClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setIsOpen(false);
     setOpenDropdown(null);
@@ -86,7 +73,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" onClick={() => handleNavClick()} className="flex items-center gap-3 group">
+          <Link to="/" onClick={handleNavClick} className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow-primary group-hover:scale-110 transition-transform">
               <GraduationCap className="w-7 h-7 text-primary-foreground" />
             </div>
@@ -109,7 +96,7 @@ export function Navbar() {
               >
                 <Link
                   to={item.path}
-                  onClick={item.name === "Educación" ? handleEducacionClick : () => handleNavClick()}
+                  onClick={item.name === "Educación" ? handleEducacionClick : handleNavClick}
                   onMouseEnter={() => item.name === "Educación" && location.pathname === "/educacion" && setOpenDropdown("Educación")}
                   className={cn(
                     "flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-all",
@@ -129,7 +116,7 @@ export function Navbar() {
                       <Link
                         key={subItem.name}
                         to={subItem.path}
-                        onClick={() => handleNavClick()}
+                        onClick={handleNavClick}
                         className={cn(
                           "block px-4 py-2 rounded-xl text-sm transition-colors",
                           isActive(subItem.path)
