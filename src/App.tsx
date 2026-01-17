@@ -11,9 +11,9 @@ import NivelSecundaria from "./pages/NivelSecundaria";
 import Campus from "./pages/Campus";
 import Sedes from "./pages/Sedes";
 import Galeria from "./pages/Galeria";
-import Instrumentos from "./pages/Instrumentos";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <HashRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/educacion" element={<Educacion />} />
@@ -32,7 +33,6 @@ const App = () => (
           <Route path="/campus" element={<Campus />} />
           <Route path="/sedes" element={<Sedes />} />
           <Route path="/galeria" element={<Galeria />} />
-          <Route path="/instrumentos" element={<Instrumentos />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

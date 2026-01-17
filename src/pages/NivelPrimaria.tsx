@@ -1,69 +1,76 @@
 import { Layout } from "@/components/layout/Layout";
-import { ArrowRight, BookOpen, Calculator, Globe, Microscope, Palette, Trophy, MessageCircle, UsersRound, Heart, Languages, Music, Lightbulb, Rocket } from "lucide-react";
+import { ArrowRight, BookOpen, Calculator, Globe, Microscope, Palette, Trophy, UsersRound, Heart, Languages, Music, Lightbulb, Rocket, PenTool } from "lucide-react";
 import nivelPrimaria from "@/assets/primaria.jpg";
+import wstpIcon from "@/assets/wstp.svg";
+import lecturaImg from "@/assets/primaria/LecturaEscritura.jpeg";
+import matesImg from "@/assets/primaria/Matematicas.jpeg";
+import socialesImg from "@/assets/primaria/CienciasSociales.jpeg";
+import naturalesImg from "@/assets/primaria/CienciasNaturales.jpeg";
+import arteImg from "@/assets/primaria/ArteCultura.jpeg";
+import fisicaImg from "@/assets/primaria/EducacionFisica.jpeg";
 
 const features = [
-  { icon: BookOpen, title: "Lectura y Escritura", description: "Desarrollo de competencias comunicativas sólidas" },
-  { icon: Calculator, title: "Matemáticas", description: "Razonamiento lógico y resolución de problemas" },
-  { icon: Globe, title: "Ciencias Sociales", description: "Conocimiento del mundo y formación ciudadana" },
-  { icon: Microscope, title: "Ciencias Naturales", description: "Exploración científica y pensamiento crítico" },
-  { icon: Palette, title: "Arte y Cultura", description: "Expresión creativa y apreciación artística" },
-  { icon: Trophy, title: "Educación Física", description: "Desarrollo de habilidades deportivas y trabajo en equipo" },
+  { icon: BookOpen, title: "Lectura y Escritura", description: "Desarrollo de competencias comunicativas sólidas", image: lecturaImg },
+  { icon: Calculator, title: "Matemáticas", description: "Razonamiento lógico y resolución de problemas", image: matesImg },
+  { icon: Globe, title: "Ciencias Sociales", description: "Conocimiento del mundo y formación ciudadana", image: socialesImg },
+  { icon: Microscope, title: "Ciencias Naturales", description: "Exploración científica y pensamiento crítico", image: naturalesImg },
+  { icon: Palette, title: "Arte y Cultura", description: "Expresión creativa y apreciación artística", image: arteImg },
+  { icon: Trophy, title: "Educación Física", description: "Desarrollo de habilidades deportivas y trabajo en equipo", image: fisicaImg },
 ];
 
 const areasCurriculares = [
-  { 
-    icon: Calculator, 
-    title: "Matemática", 
+  {
+    icon: Calculator,
+    title: "Matemática",
     description: "Desarrolla la creatividad y la capacidad para resolver problemas; asimismo, eleva al máximo sus capacidades intelectuales y de razonamiento lógico.",
     color: "text-blue-600",
     bgColor: "bg-blue-600/10"
   },
-  { 
-    icon: MessageCircle, 
-    title: "Comunicación", 
+  {
+    icon: PenTool,
+    title: "Comunicación",
     description: "Desarrolla la expresión y comprensión oral, la comprensión lectora, la producción de textos y la expresión artística.",
     color: "text-purple-600",
     bgColor: "bg-purple-600/10"
   },
-  { 
-    icon: UsersRound, 
-    title: "Personal Social", 
+  {
+    icon: UsersRound,
+    title: "Personal Social",
     description: "Fomenta el amor por nuestra historia, creencias y costumbres; así como el valor por su familia, cultura y país.",
     color: "text-green-600",
     bgColor: "bg-green-600/10"
   },
-  { 
-    icon: Microscope, 
-    title: "Ciencia y Tecnología", 
+  {
+    icon: Microscope,
+    title: "Ciencia y Tecnología",
     description: "Desarrolla la conciencia sobre el cuidado de su propio cuerpo y promueve la preservación de nuestro medio ambiente.",
     color: "text-orange-600",
     bgColor: "bg-orange-600/10"
   },
-  { 
-    icon: Trophy, 
-    title: "Educación Física", 
+  {
+    icon: Trophy,
+    title: "Educación Física",
     description: "Desarrolla una conciencia crítica hacia el cuidado de su salud y la de los demás. Es autónomo y capaz de asumir sus propias decisiones para mejorar su calidad de vida.",
     color: "text-red-600",
     bgColor: "bg-red-600/10"
   },
-  { 
-    icon: Languages, 
-    title: "Inglés", 
+  {
+    icon: Languages,
+    title: "Inglés",
     description: "Comprende y produce textos orales y escritos en inglés. Esta es una lengua extranjera importante, ya que permite acceder a los últimos avances tecnológicos, así como estar conectado con el mundo.",
     color: "text-indigo-600",
     bgColor: "bg-indigo-600/10"
   },
-  { 
-    icon: Music, 
-    title: "Arte y Cultura", 
+  {
+    icon: Music,
+    title: "Arte y Cultura",
     description: "Fortalece su autoestima, la valoración y aceptación de los demás; consecuentemente, reconoce que el diálogo intercultural contribuye con la afirmación de las identidades personales y colectivas.",
     color: "text-pink-600",
     bgColor: "bg-pink-600/10"
   },
-  { 
-    icon: Heart, 
-    title: "Educación Religiosa", 
+  {
+    icon: Heart,
+    title: "Educación Religiosa",
     description: "Este curso-taller está a cargo del área de Psicología y, a través de él, se fortalecen los distintos valores que formamos en nuestros estudiantes.",
     color: "text-amber-600",
     bgColor: "bg-amber-600/10"
@@ -106,20 +113,56 @@ const NivelPrimaria = () => {
         </div>
       </section>
 
+      {/* CTA (Relocated and Optimized) */}
+      <section className="py-12 bg-gradient-hero border-y border-white/10">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 bg-white/10 backdrop-blur-sm p-8 rounded-3xl border border-white/20">
+            <div className="text-left max-w-2xl">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-foreground mb-2">
+                Forma parte de nuestra familia
+              </h2>
+              <p className="text-lg text-primary-foreground/80">
+                Descubre cómo formamos estudiantes integrales preparados para los retos del futuro
+              </p>
+            </div>
+            <button onClick={handleWhatsAppClick} className="whitespace-nowrap btn-hero text-sm">
+              Agenda una Visita
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20 bg-fresh-blue/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-display font-bold text-center mb-12">
-            Áreas de Desarrollo
+            ¿Qué Aprenderán?
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature) => (
-              <div key={feature.title} className="card-level">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
-                  <feature.icon className="w-7 h-7 text-primary" />
+              <div key={feature.title} className="group overflow-hidden rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Icon Overlay (Lado izquierdo superior) */}
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-lg border border-primary/20">
+                    <feature.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <h3 className="text-xl font-display font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <div className="p-6">
+                  <h3 className="text-xl font-display font-bold mb-3 group-hover:text-primary transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -154,11 +197,11 @@ const NivelPrimaria = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {areasCurriculares.map((area) => (
-                <div 
-                  key={area.title} 
+                <div
+                  key={area.title}
                   className="group card-level hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className={`w-16 h-16 rounded-2xl ${area.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <div className={`w-16 h-16 rounded-2xl ${area.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-black/5`}>
                     <area.icon className={`w-8 h-8 ${area.color}`} />
                   </div>
                   <h4 className="text-lg font-display font-bold mb-3">{area.title}</h4>
@@ -190,21 +233,7 @@ const NivelPrimaria = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-hero">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-display font-bold text-primary-foreground mb-6">
-            Forma parte de nuestra familia
-          </h2>
-          <p className="text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Descubre cómo formamos estudiantes integrales preparados para los retos del futuro
-          </p>
-          <button onClick={handleWhatsAppClick} className="btn-hero-outline">
-            Agenda una Visita
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      </section>
+
     </Layout>
   );
 };

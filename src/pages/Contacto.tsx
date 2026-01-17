@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { MapPin, Phone, MessageCircle, Mail, Clock, FileText, Users, ClipboardCheck, FileSignature } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, FileText, Users, ClipboardCheck, FileSignature } from "lucide-react";
 import { toast } from "sonner";
+import wstpIcon from "@/assets/wstp.svg";
+import eventImg from "@/assets/secundaria2.jpeg";
 
 const admissionSteps = [
   {
@@ -51,7 +53,33 @@ const Contacto = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("¡Gracias por contactarnos! Te responderemos pronto.");
+
+    // Configuración de números por sede
+    const whatsappNumbers = {
+      brena: "51923986733",
+      izaguirre: "51979534160",
+    };
+
+    // Obtener número según sede, por defecto usar Brena si no hay selección (aunque es required)
+    const targetPhone = whatsappNumbers[formData.sede as keyof typeof whatsappNumbers] || whatsappNumbers.brena;
+
+    // Formatear mensaje profesional
+    const message = encodeURIComponent(
+      `¡Hola! 👋 Vengo del sitio web y solicito información.\n\n` +
+      `*📝 MIS DATOS:*\n` +
+      `• *Nombre:* ${formData.nombre}\n` +
+      `• *Email:* ${formData.email}\n` +
+      `• *Teléfono:* ${formData.telefono}\n` +
+      `• *Interés:* ${formData.nivel.toUpperCase()}\n` +
+      `• *Sede:* ${formData.sede === 'brena' ? 'Breña' : 'Izaguirre'}\n\n` +
+      `*💬 MENSAJE:*\n${formData.mensaje || 'Solicitud de información general.'}`
+    );
+
+    // Abrir WhatsApp
+    window.open(`https://wa.me/${targetPhone}?text=${message}`, "_blank");
+
+    toast.success("¡Gracias! Redirigiendo a WhatsApp...");
+
     setFormData({
       nombre: "",
       email: "",
@@ -69,17 +97,23 @@ const Contacto = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-24 bg-gradient-hero">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-6">
-            ¡Matrículas Abiertas!
+      <section className="relative py-32 overflow-hidden bg-charcoal text-white">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/40 to-transparent z-10" />
+          <img src={eventImg} alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="container mx-auto px-4 relative z-20 text-center md:text-left">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-red text-white text-sm font-bold mb-6 shadow-lg drop-shadow-md">
+              ¡Matrículas Abiertas!
+            </div>
+            <h1 className="text-5xl md:text-7xl font-display font-bold mb-6 drop-shadow-lg">
+              Admisión <span className="text-brand-red">2026</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white font-medium leading-relaxed drop-shadow-md max-w-2xl">
+              Inicio de clases: <span className="font-bold">Marzo 2026</span>. ¡Asegura la vacante de tu hijo hoy y forma parte de nuestra comunidad educativa!
+            </p>
           </div>
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-6">
-            Admisión 2026
-          </h1>
-          <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Inicio de clases: Marzo 2026. ¡Asegura la vacante de tu hijo hoy!
-          </p>
         </div>
       </section>
 
@@ -222,13 +256,15 @@ const Contacto = () => {
                       <Phone className="w-5 h-5 text-primary" />
                       <a href="tel:015018412" className="text-muted-foreground hover:text-primary">01 5018412</a>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-[#25D366] flex items-center justify-center shadow-[0_4px_20px_rgba(37,211,102,0.3)] flex-shrink-0">
+                        <img src={wstpIcon} alt="" className="w-8 h-8" />
+                      </div>
                       <a
                         href="https://wa.me/51923986733"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-[#25D366]"
+                        className="text-xl font-bold text-foreground hover:text-[#25D366] transition-colors"
                       >
                         923 986 733
                       </a>
@@ -248,13 +284,15 @@ const Contacto = () => {
                       <Phone className="w-5 h-5 text-primary" />
                       <a href="tel:016515072" className="text-muted-foreground hover:text-primary">01 6515072</a>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <MessageCircle className="w-5 h-5 text-[#25D366]" />
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-2xl bg-[#25D366] flex items-center justify-center shadow-[0_4px_20px_rgba(37,211,102,0.3)] flex-shrink-0">
+                        <img src={wstpIcon} alt="" className="w-8 h-8" />
+                      </div>
                       <a
                         href="https://wa.me/51979534160"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-[#25D366]"
+                        className="text-xl font-bold text-foreground hover:text-[#25D366] transition-colors"
                       >
                         979 534 160
                       </a>

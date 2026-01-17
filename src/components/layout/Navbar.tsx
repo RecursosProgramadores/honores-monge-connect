@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown, GraduationCap } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logoImg from "@/assets/logohonores.jpg";
 
 const navItems = [
   { name: "Inicio", path: "/" },
@@ -17,7 +18,6 @@ const navItems = [
   { name: "Nuestro Campus", path: "/campus" },
   { name: "Sedes", path: "/sedes" },
   { name: "Fotogalerías", path: "/galeria" },
-  { name: "Instrumentos", path: "/instrumentos" },
   { name: "Contacto", path: "/contacto" },
 ];
 
@@ -38,7 +38,7 @@ export function Navbar() {
 
   const handleEducacionClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    
+
     // Si ya estamos en la página de educación
     if (location.pathname === "/educacion") {
       // Hacer scroll a la sección de niveles
@@ -58,12 +58,8 @@ export function Navbar() {
     setOpenDropdown(null);
   };
 
-  const handleAdmisionClick = () => {
-    const phoneNumber = "59172091652"; // Número de WhatsApp
-    const message = encodeURIComponent(
-      "¡Hola! 👋 Estoy interesado/a en información sobre el proceso de *Admisión 2026* para el Colegio Honores Monge. Me gustaría conocer más sobre:\n\n✓ Requisitos de admisión\n✓ Niveles educativos disponibles (Inicial, Primaria, Secundaria)\n✓ Proceso de inscripción\n✓ Costos y modalidades de pago\n✓ Fecha de inicio de clases\n\n¡Gracias!"
-    );
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  const handleIntranetClick = () => {
+    window.open("https://intranet.honoresmonge.edu.pe/login", "_blank");
   };
 
   return (
@@ -72,15 +68,11 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" onClick={handleNavClick} className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-hero flex items-center justify-center shadow-glow-primary group-hover:scale-110 transition-transform">
-              <GraduationCap className="w-7 h-7 text-primary-foreground" />
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-display font-bold text-xl text-foreground">
-                Honores Monge
-              </span>
-              <p className="text-xs text-muted-foreground">Formación Integral</p>
-            </div>
+            <img
+              src={logoImg}
+              alt="Colegio Honores Monge"
+              className="h-14 w-auto object-contain transition-transform group-hover:scale-110"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -97,7 +89,7 @@ export function Navbar() {
                   onClick={item.name === "Educación" ? handleEducacionClick : handleNavClick}
                   className={cn(
                     "flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-all",
-                    isActive(item.path)
+                    isActive(item.path) || (item.name === "Educación" && location.pathname.startsWith("/educacion"))
                       ? "bg-primary text-primary-foreground"
                       : "text-foreground hover:bg-muted"
                   )}
@@ -108,25 +100,27 @@ export function Navbar() {
 
                 {/* Dropdown */}
                 {item.dropdown && openDropdown === item.name && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-card rounded-2xl shadow-elevated p-2 animate-fade-in">
-                    {item.dropdown.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        to={subItem.path}
-                        onClick={() => {
-                          handleNavClick();
-                          setOpenDropdown(null);
-                        }}
-                        className={cn(
-                          "block px-4 py-2 rounded-xl text-sm transition-colors",
-                          isActive(subItem.path)
-                            ? "bg-primary text-primary-foreground"
-                            : "text-foreground hover:bg-muted"
-                        )}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 pt-2 w-48 animate-fade-in z-[60]">
+                    <div className="bg-card rounded-2xl shadow-elevated p-2 border border-border/50">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          onClick={() => {
+                            handleNavClick();
+                            setOpenDropdown(null);
+                          }}
+                          className={cn(
+                            "block px-4 py-2 rounded-xl text-sm transition-colors",
+                            isActive(subItem.path)
+                              ? "bg-primary text-primary-foreground"
+                              : "text-foreground hover:bg-muted"
+                          )}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -135,10 +129,10 @@ export function Navbar() {
 
           {/* CTA Button */}
           <button
-            onClick={handleAdmisionClick}
+            onClick={handleIntranetClick}
             className="hidden lg:flex btn-hero text-sm py-2 px-6"
           >
-            Admisión 2026
+            Intranet
           </button>
 
           {/* Mobile Menu Button */}
@@ -160,7 +154,7 @@ export function Navbar() {
                   onClick={() => !item.dropdown && handleNavClick()}
                   className={cn(
                     "flex items-center justify-between px-4 py-3 rounded-xl transition-colors",
-                    isActive(item.path)
+                    isActive(item.path) || (item.name === "Educación" && location.pathname.startsWith("/educacion"))
                       ? "bg-primary text-primary-foreground"
                       : "text-foreground hover:bg-muted"
                   )}
@@ -205,11 +199,11 @@ export function Navbar() {
             <button
               onClick={() => {
                 setIsOpen(false);
-                handleAdmisionClick();
+                handleIntranetClick();
               }}
               className="block mt-4 btn-hero text-center w-full"
             >
-              Admisión 2026
+              Intranet
             </button>
           </div>
         )}

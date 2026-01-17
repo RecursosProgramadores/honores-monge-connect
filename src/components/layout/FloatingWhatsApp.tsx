@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { MessageCircle, X, Phone } from "lucide-react";
+import { X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import wstpIcon from "@/assets/wstp.svg";
 
 const sedes = [
   {
@@ -58,7 +59,7 @@ export function FloatingWhatsApp() {
               : "bg-[#25D366] text-white hover:scale-110 active:scale-95"
           )}
           style={{
-            boxShadow: isWhatsAppOpen ? undefined : "0 4px 20px rgba(37, 211, 102, 0.5)",
+            boxShadow: isWhatsAppOpen ? undefined : "0 4px 20px rgba(0, 255, 94, 0.5)",
             WebkitTapHighlightColor: "transparent",
             userSelect: "none",
           }}
@@ -73,7 +74,7 @@ export function FloatingWhatsApp() {
           {isWhatsAppOpen ? (
             <X className="w-7 h-7 pointer-events-none" />
           ) : (
-            <MessageCircle className="w-7 h-7 pointer-events-none" />
+            <img src={wstpIcon} alt="WhatsApp" className="w-8 h-8 pointer-events-none" />
           )}
         </button>
 
@@ -94,10 +95,12 @@ export function FloatingWhatsApp() {
               <button
                 key={sede.name}
                 onClick={() => handleWhatsAppClick(sede.whatsapp, sede.message)}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 transition-colors text-left"
+                className="w-full flex items-center gap-4 px-3 py-3 rounded-2xl bg-[#25D366]/5 hover:bg-[#25D366]/15 transition-all text-left group"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366] flex-shrink-0" />
-                <span className="text-sm font-bold text-foreground">{sede.name}</span>
+                <div className="w-10 h-10 rounded-xl bg-[#25D366] flex items-center justify-center shadow-[0_4px_12px_rgba(37,211,102,0.4)] flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <img src={wstpIcon} alt="" className="w-6 h-6" />
+                </div>
+                <span className="text-sm font-bold text-foreground leading-tight">{sede.name}</span>
               </button>
             ))}
           </div>

@@ -1,83 +1,90 @@
 import { Layout } from "@/components/layout/Layout";
-import { ArrowRight, GraduationCap, Brain, Users, Target, Rocket, Award, Calculator, MessageCircle, Globe, Microscope, Trophy, Languages, Music, Heart, Briefcase, UserCheck, Lightbulb, BookOpen } from "lucide-react";
+import { ArrowRight, GraduationCap, Brain, Users, Target, Rocket, Award, Calculator, Globe, Microscope, Trophy, Languages, Music, Heart, Briefcase, UserCheck, Lightbulb, BookOpen, Sparkles, BookText } from "lucide-react";
 import nivelSecundaria from "@/assets/secundaria.jpeg";
+import wstpIcon from "@/assets/wstp.svg";
+import pensamientoImg from "@/assets/secundaria/Pensamiento Critico.jpeg";
+import orientacionImg from "@/assets/secundaria/OrientacionVocacional.jpeg";
+import liderazgoImg from "@/assets/secundaria/Liderazgo.jpeg";
+import proyectosImg from "@/assets/secundaria/ProyectosInvestigacion.jpeg";
+import prepImg from "@/assets/secundaria/PreparacionPreuniversitaria.jpeg";
+import ciudadanaImg from "@/assets/secundaria/FormacionCiudadana.jpg";
 
 const features = [
-  { icon: Brain, title: "Pensamiento Crítico", description: "Desarrollo de habilidades analíticas y argumentativas" },
-  { icon: Target, title: "Orientación Vocacional", description: "Acompañamiento en la elección de carrera profesional" },
-  { icon: Users, title: "Liderazgo", description: "Formación de líderes responsables y comprometidos" },
-  { icon: Rocket, title: "Proyectos de Investigación", description: "Metodología de investigación y trabajo científico" },
-  { icon: Award, title: "Preparación Preuniversitaria", description: "Refuerzo académico para el ingreso a universidades" },
-  { icon: GraduationCap, title: "Formación Ciudadana", description: "Compromiso social y participación activa" },
+  { icon: Brain, title: "Pensamiento Crítico", description: "Desarrollo de habilidades analíticas y argumentativas", image: pensamientoImg },
+  { icon: Target, title: "Orientación Vocacional", description: "Acompañamiento en la elección de carrera profesional", image: orientacionImg },
+  { icon: Users, title: "Liderazgo", description: "Formación de líderes responsables y comprometidos", image: liderazgoImg },
+  { icon: Rocket, title: "Proyectos de Investigación", description: "Metodología de investigación y trabajo científico", image: proyectosImg },
+  { icon: Award, title: "Preparación Preuniversitaria", description: "Refuerzo académico para el ingreso a universidades", image: prepImg },
+  { icon: GraduationCap, title: "Formación Ciudadana", description: "Compromiso social y participación activa", image: ciudadanaImg },
 ];
 
 const areasCurriculares = [
-  { 
-    icon: Calculator, 
-    title: "Matemática", 
+  {
+    icon: Calculator,
+    title: "Matemática",
     description: "Aritmética, Álgebra, Geometría, Trigonometría y Razonamiento Matemático.",
     color: "text-blue-600",
     bgColor: "bg-blue-600/10"
   },
-  { 
-    icon: MessageCircle, 
-    title: "Comunicación", 
+  {
+    icon: BookText,
+    title: "Comunicación",
     description: "Lenguaje, Literatura, Razonamiento Verbal y Plan Lector.",
     color: "text-purple-600",
     bgColor: "bg-purple-600/10"
   },
-  { 
-    icon: Globe, 
-    title: "Ciencias Sociales", 
+  {
+    icon: Globe,
+    title: "Ciencias Sociales",
     description: "Historia del Perú, Historia Universal, Geografía, Economía, Desarrollo Personal y Ciudadanía Cívica.",
     color: "text-green-600",
     bgColor: "bg-green-600/10"
   },
-  { 
-    icon: Microscope, 
-    title: "Ciencia y Tecnología", 
+  {
+    icon: Microscope,
+    title: "Ciencia y Tecnología",
     description: "Física, Química y Biología.",
     color: "text-orange-600",
     bgColor: "bg-orange-600/10"
   },
-  { 
-    icon: Trophy, 
-    title: "Educación Física", 
+  {
+    icon: Trophy,
+    title: "Educación Física",
     description: "Desarrollo corporal, deportivo y fortalecimiento de hábitos saludables.",
     color: "text-red-600",
     bgColor: "bg-red-600/10"
   },
-  { 
-    icon: Languages, 
-    title: "Inglés", 
+  {
+    icon: Languages,
+    title: "Inglés",
     description: "Dominio del idioma inglés con certificación internacional.",
     color: "text-indigo-600",
     bgColor: "bg-indigo-600/10"
   },
-  { 
-    icon: Music, 
-    title: "Arte y Cultura", 
+  {
+    icon: Music,
+    title: "Arte y Cultura",
     description: "Expresión artística, apreciación cultural e identidad.",
     color: "text-pink-600",
     bgColor: "bg-pink-600/10"
   },
-  { 
-    icon: Heart, 
-    title: "Educación Religiosa", 
+  {
+    icon: Heart,
+    title: "Educación Religiosa",
     description: "Formación en valores y principios éticos.",
     color: "text-amber-600",
     bgColor: "bg-amber-600/10"
   },
-  { 
-    icon: Briefcase, 
-    title: "Educación por el Trabajo", 
+  {
+    icon: Briefcase,
+    title: "Educación por el Trabajo",
     description: "Desarrollo de competencias laborales y emprendimiento.",
     color: "text-teal-600",
     bgColor: "bg-teal-600/10"
   },
-  { 
-    icon: UserCheck, 
-    title: "Desarrollo Personal y Ciudadanía Cívica", 
+  {
+    icon: UserCheck,
+    title: "Desarrollo Personal y Ciudadanía Cívica",
     description: "Formación integral del estudiante como ciudadano responsable.",
     color: "text-cyan-600",
     bgColor: "bg-cyan-600/10"
@@ -120,22 +127,106 @@ const NivelSecundaria = () => {
         </div>
       </section>
 
+      {/* CTA (Relocated and Optimized) */}
+      <section className="py-12 bg-gradient-fresh border-y border-secondary/20">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 bg-white/50 backdrop-blur-sm p-8 rounded-3xl border border-white/50">
+            <div className="text-left max-w-2xl">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-secondary-foreground mb-2">
+                Prepárate para el futuro
+              </h2>
+              <p className="text-lg text-secondary-foreground/80">
+                Únete a una comunidad de jóvenes líderes comprometidos con su formación
+              </p>
+            </div>
+            <button onClick={handleWhatsAppClick} className="whitespace-nowrap inline-flex items-center gap-2 px-8 py-4 bg-foreground text-primary-foreground rounded-full font-semibold hover:scale-105 transition-transform shadow-xl">
+              Conoce Nuestro Programa
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20 bg-fresh-green/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-display font-bold text-center mb-12">
-            Formación para el Éxito
+            ¿Qué Aprenderán?
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature) => (
-              <div key={feature.title} className="card-level">
-                <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-4">
-                  <feature.icon className="w-7 h-7 text-secondary" />
+              <div key={feature.title} className="group overflow-hidden rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Icon Overlay (Lado izquierdo superior) */}
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-lg border border-secondary/20">
+                    <feature.icon className="w-6 h-6 text-secondary" />
+                  </div>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <h3 className="text-xl font-display font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <div className="p-6">
+                  <h3 className="text-xl font-display font-bold mb-3 group-hover:text-secondary transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Aula de Alto Rendimiento (Moved up) */}
+      <section className="py-20 bg-gradient-to-br from-secondary/5 via-background to-secondary/10 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute -top-24 -right-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-[2.5rem] p-1 md:p-1.5 shadow-2xl shadow-secondary/10 border border-secondary/10">
+              <div className="bg-gradient-to-br from-white to-secondary/5 rounded-[2rem] p-8 md:p-12 border border-white">
+                <div className="flex flex-col items-center text-center">
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-bold mb-8 shadow-lg animate-bounce-subtle">
+                    <Sparkles className="w-4 h-4" />
+                    AVISO IMPORTANTE
+                  </div>
+
+                  <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-foreground">
+                    Aula de <span className="text-secondary">Alto Rendimiento</span>
+                  </h2>
+
+                  <div className="w-20 h-1.5 bg-gradient-to-r from-secondary to-accent rounded-full mb-8" />
+
+                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 font-light">
+                    Espacio exclusivo diseñado para nuestros alumnos destacados, enfocado en potenciar un <span className="text-foreground font-semibold">nivel cognitivo superior</span> y habilidades de liderazgo avanzado.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-4">
+                    <div className="flex items-center gap-4 p-5 rounded-2xl bg-white shadow-soft border border-secondary/5 text-left transition-transform hover:scale-105">
+                      <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                        <Target className="w-6 h-6 text-secondary" />
+                      </div>
+                      <span className="font-medium text-foreground">Exigencia Académica Diferenciada</span>
+                    </div>
+                    <div className="flex items-center gap-4 p-5 rounded-2xl bg-white shadow-soft border border-secondary/5 text-left transition-transform hover:scale-105">
+                      <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
+                        <Brain className="w-6 h-6 text-accent" />
+                      </div>
+                      <span className="font-medium text-foreground">Desarrollo Cognitivo Especializado</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -171,11 +262,11 @@ const NivelSecundaria = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {areasCurriculares.map((area) => (
-                <div 
-                  key={area.title} 
+                <div
+                  key={area.title}
                   className="group card-level hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className={`w-16 h-16 rounded-2xl ${area.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <div className={`w-16 h-16 rounded-2xl ${area.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-black/5`}>
                     <area.icon className={`w-8 h-8 ${area.color}`} />
                   </div>
                   <h4 className="text-lg font-display font-bold mb-3">{area.title}</h4>
@@ -211,21 +302,9 @@ const NivelSecundaria = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-fresh">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-display font-bold text-secondary-foreground mb-6">
-            Prepárate para el futuro
-          </h2>
-          <p className="text-xl text-secondary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Únete a una comunidad de jóvenes líderes comprometidos con su formación
-          </p>
-          <button onClick={handleWhatsAppClick} className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-primary-foreground rounded-full font-semibold hover:scale-105 transition-transform">
-            Conoce Nuestro Programa
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      </section>
+
+
+
     </Layout>
   );
 };

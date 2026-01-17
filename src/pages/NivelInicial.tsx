@@ -1,41 +1,48 @@
 import { Layout } from "@/components/layout/Layout";
-import { ArrowRight, Baby, Heart, Sparkles, Music, Palette, Users, Calculator, MessageCircle, UsersRound, Microscope, Lightbulb } from "lucide-react";
+import { ArrowRight, Baby, Heart, Sparkles, Music, Palette, Users, Calculator, UsersRound, Microscope, Lightbulb, Languages, MessageCircle } from "lucide-react";
 import nivelInicial from "@/assets/inicial.jpg";
+import wstpIcon from "@/assets/wstp.svg";
+import emocionalImg from "@/assets/inicial/DesarrolloEmocional.jpeg";
+import ludicoImg from "@/assets/inicial/AprendizajeLudico.jpg";
+import artisticaImg from "@/assets/inicial/ExpresionnArtistica.jpg";
+import motricidadImg from "@/assets/inicial/Motricidad.jpeg";
+import socializacionImg from "@/assets/inicial/Socializacion.jpeg";
+import cuidadoImg from "@/assets/inicial/CuidadoIntegral.jpeg";
 
 const features = [
-  { icon: Heart, title: "Desarrollo Emocional", description: "Fortalecemos la autoestima y seguridad de los más pequeños" },
-  { icon: Sparkles, title: "Aprendizaje Lúdico", description: "Aprendemos jugando y explorando el mundo" },
-  { icon: Music, title: "Expresión Artística", description: "Música, danza y arte para despertar la creatividad" },
-  { icon: Palette, title: "Motricidad", description: "Desarrollo de habilidades motoras finas y gruesas" },
-  { icon: Users, title: "Socialización", description: "Primeras experiencias de convivencia y amistad" },
-  { icon: Baby, title: "Cuidado Integral", description: "Atención personalizada en un ambiente seguro" },
+  { icon: Heart, title: "Desarrollo Emocional", description: "Fortalecemos la autoestima y seguridad de los más pequeños", image: emocionalImg },
+  { icon: Sparkles, title: "Aprendizaje Lúdico", description: "Aprendemos jugando y explorando el mundo", image: ludicoImg },
+  { icon: Music, title: "Expresión Artística", description: "Música, danza y arte para despertar la creatividad", image: artisticaImg },
+  { icon: Palette, title: "Motricidad", description: "Desarrollo de habilidades motoras finas y gruesas", image: motricidadImg },
+  { icon: Users, title: "Socialización", description: "Primeras experiencias de convivencia y amistad", image: socializacionImg },
+  { icon: Baby, title: "Cuidado Integral", description: "Atención personalizada en un ambiente seguro", image: cuidadoImg },
 ];
 
 const areasAcademicas = [
-  { 
-    icon: Calculator, 
-    title: "Matemática", 
+  {
+    icon: Calculator,
+    title: "Matemática",
     description: "Desarrollo del pensamiento lógico, números, formas y resolución de problemas",
     color: "text-blue-500",
     bgColor: "bg-blue-500/10"
   },
-  { 
-    icon: MessageCircle, 
-    title: "Comunicación", 
+  {
+    icon: MessageCircle,
+    title: "Comunicación",
     description: "Expresión oral, comprensión lectora y desarrollo del lenguaje",
     color: "text-purple-500",
     bgColor: "bg-purple-500/10"
   },
-  { 
-    icon: UsersRound, 
-    title: "Personal Social", 
+  {
+    icon: UsersRound,
+    title: "Personal Social",
     description: "Identidad, autonomía, convivencia y construcción de valores",
     color: "text-green-500",
     bgColor: "bg-green-500/10"
   },
-  { 
-    icon: Microscope, 
-    title: "Ciencia y Tecnología", 
+  {
+    icon: Microscope,
+    title: "Ciencia y Tecnología",
     description: "Exploración del entorno, experimentación y curiosidad científica",
     color: "text-orange-500",
     bgColor: "bg-orange-500/10"
@@ -78,20 +85,56 @@ const NivelInicial = () => {
         </div>
       </section>
 
+      {/* CTA (Relocated and Optimized) */}
+      <section className="py-12 bg-gradient-warm border-y border-accent/20">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 bg-white/50 backdrop-blur-sm p-8 rounded-3xl border border-white/50">
+            <div className="text-left max-w-2xl">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-accent-foreground mb-2">
+                Dale a tu hijo el mejor comienzo
+              </h2>
+              <p className="text-lg text-accent-foreground/80">
+                Agenda una visita y conoce nuestras instalaciones diseñadas especialmente para los más pequeños
+              </p>
+            </div>
+            <button onClick={handleWhatsAppClick} className="whitespace-nowrap inline-flex items-center gap-2 px-8 py-4 bg-foreground text-primary-foreground rounded-full font-semibold hover:scale-105 transition-transform shadow-xl">
+              Solicita Información
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20 bg-fresh-yellow/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-display font-bold text-center mb-12">
             ¿Qué Aprenderán?
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature) => (
-              <div key={feature.title} className="card-level">
-                <div className="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center mb-4">
-                  <feature.icon className="w-7 h-7 text-accent" />
+              <div key={feature.title} className="group overflow-hidden rounded-3xl bg-background border border-border/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Icon Overlay (Lado izquierdo superior) */}
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center shadow-lg border border-accent/20">
+                    <feature.icon className="w-6 h-6 text-accent" />
+                  </div>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <h3 className="text-xl font-display font-bold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <div className="p-6">
+                  <h3 className="text-xl font-display font-bold mb-3 group-hover:text-accent transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -121,11 +164,11 @@ const NivelInicial = () => {
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               {areasAcademicas.map((area) => (
-                <div 
-                  key={area.title} 
+                <div
+                  key={area.title}
                   className="group card-level hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className={`w-16 h-16 rounded-2xl ${area.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <div className={`w-16 h-16 rounded-2xl ${area.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-black/5`}>
                     <area.icon className={`w-8 h-8 ${area.color}`} />
                   </div>
                   <h4 className="text-xl font-display font-bold mb-3">{area.title}</h4>
@@ -166,21 +209,7 @@ const NivelInicial = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-warm">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-display font-bold text-accent-foreground mb-6">
-            Dale a tu hijo el mejor comienzo
-          </h2>
-          <p className="text-xl text-accent-foreground/80 mb-8 max-w-2xl mx-auto">
-            Agenda una visita y conoce nuestras instalaciones diseñadas especialmente para los más pequeños
-          </p>
-          <button onClick={handleWhatsAppClick} className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-primary-foreground rounded-full font-semibold hover:scale-105 transition-transform">
-            Solicita Información
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      </section>
+
     </Layout>
   );
 };

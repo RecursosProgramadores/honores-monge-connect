@@ -36,6 +36,11 @@
 
     --radius: 1rem;
 
+    /* Brand Colors */
+    --brand-red: 358 84% 51%;
+    --charcoal: 0 0% 16%;
+    --primary: 211 100% 50%; /* Remaining the preferred blue */
+
     /* Custom educational tokens */
     --sky-light: 200 80% 95%;
     --sky-medium: 200 70% 85%;
@@ -44,16 +49,18 @@
     --blue-soft: 211 80% 92%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(211 100% 50%) 0%, hsl(200 100% 60%) 50%, hsl(180 70% 50%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-red)) 0%, hsl(358 70% 60%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(211 100% 50%) 0%, hsl(200 100% 60%) 100%);
     --gradient-warm: linear-gradient(135deg, hsl(45 100% 51%) 0%, hsl(30 100% 55%) 100%);
     --gradient-fresh: linear-gradient(135deg, hsl(145 63% 42%) 0%, hsl(160 60% 45%) 100%);
     --gradient-sky: linear-gradient(180deg, hsl(200 80% 95%) 0%, hsl(0 0% 100%) 100%);
     
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(211 100% 50% / 0.15);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--brand-red) / 0.15);
     --shadow-card: 0 8px 30px -8px hsl(220 25% 20% / 0.1);
     --shadow-elevated: 0 20px 50px -15px hsl(220 25% 20% / 0.2);
-    --shadow-glow-primary: 0 0 40px hsl(211 100% 50% / 0.3);
+    --shadow-glow-primary: 0 0 30px hsl(var(--brand-red) / 0.4);
+    --shadow-glow-blue: 0 0 30px hsl(211 100% 50% / 0.3);
     --shadow-glow-secondary: 0 0 40px hsl(145 63% 42% / 0.3);
 
     --sidebar-background: 0 0% 98%;
@@ -104,13 +111,19 @@
 @layer components {
   .btn-hero {
     @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300;
-    @apply bg-primary text-primary-foreground hover:scale-105 active:scale-95;
+    @apply bg-[hsl(var(--brand-red))] text-white hover:bg-[hsl(358_84%_45%)] hover:scale-105 active:scale-95;
     box-shadow: var(--shadow-glow-primary);
+  }
+
+  .btn-hero-blue {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300;
+    @apply bg-primary text-primary-foreground hover:scale-105 active:scale-95;
+    box-shadow: var(--shadow-glow-blue);
   }
 
   .btn-hero-outline {
     @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold rounded-full transition-all duration-300;
-    @apply bg-white/90 backdrop-blur-sm text-primary border-2 border-primary/30 hover:border-primary hover:bg-white hover:scale-105 active:scale-95;
+    @apply bg-white/90 backdrop-blur-sm text-[hsl(var(--brand-red))] border-2 border-[hsl(var(--brand-red)/0.3)] hover:border-[hsl(var(--brand-red))] hover:bg-white hover:scale-105 active:scale-95;
   }
 
   .btn-whatsapp {

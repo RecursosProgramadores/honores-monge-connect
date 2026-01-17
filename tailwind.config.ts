@@ -61,6 +61,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom brand colors
+        "brand-red": "hsl(var(--brand-red))",
+        charcoal: "hsl(var(--charcoal))",
         // Custom educational colors
         sky: {
           light: "hsl(var(--sky-light))",

@@ -1,5 +1,5 @@
 import { MapPin, Phone, Navigation } from "lucide-react";
-import campusImage from "@/assets/campus-exterior.jpg";
+import campusImage from "@/assets/sede-honores-izaguirre.jpg";
 
 const sedes = [
   {
@@ -20,19 +20,19 @@ const sedes = [
 
 export function SedesPreviewSection() {
   return (
-    <section className="py-24 bg-muted relative overflow-hidden">
+    <section className="py-24 bg-charcoal relative overflow-hidden text-white">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-10"
-        style={{ backgroundImage: `url(${campusImage})` }}
-      />
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/40 to-transparent z-10" />
+        <img src={campusImage} alt="Sedes Honores Monge" className="w-full h-full object-cover" />
+      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-20">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="section-title">Nuestras Sedes</h2>
-          <p className="section-subtitle mx-auto">
-            Dos ubicaciones estratégicas para tu comodidad
+        <div className="text-center md:text-left mb-16">
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 drop-shadow-lg text-white">Nuestras Sedes</h2>
+          <p className="text-xl text-white/90 max-w-2xl font-medium drop-shadow-md">
+            Dos ubicaciones estratégicas para tu comodidad, diseñadas para el éxito de tus hijos.
           </p>
         </div>
 
