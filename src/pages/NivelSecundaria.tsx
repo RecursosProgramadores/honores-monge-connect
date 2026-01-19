@@ -7,7 +7,7 @@ import orientacionImg from "@/assets/secundaria/OrientacionVocacional.jpeg";
 import liderazgoImg from "@/assets/secundaria/Liderazgo.jpeg";
 import proyectosImg from "@/assets/secundaria/ProyectosInvestigacion.jpeg";
 import prepImg from "@/assets/secundaria/PreparacionPreuniversitaria.jpeg";
-import ciudadanaImg from "@/assets/secundaria/FormacionCiudadana.jpg";
+import ciudadanaImg from "@/assets/secundaria/FormacionCiudadana.jpeg";
 
 const features = [
   { icon: Brain, title: "Pensamiento Crítico", description: "Desarrollo de habilidades analíticas y argumentativas", image: pensamientoImg },
