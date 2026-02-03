@@ -57,7 +57,7 @@ const Contacto = () => {
     // Configuración de números por sede
     const whatsappNumbers = {
       brena: "51923986733",
-      izaguirre: "51979534160",
+      izaguirre: "51924720723",
     };
 
     // Obtener número según sede, por defecto usar Brena si no hay selección (aunque es required)
@@ -289,7 +289,7 @@ const Contacto = () => {
                         <img src={wstpIcon} alt="" className="w-8 h-8" />
                       </div>
                       <a
-                        href="https://wa.me/51979534160"
+                        href="https://wa.me/51924720723"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xl font-bold text-foreground hover:text-[#25D366] transition-colors"

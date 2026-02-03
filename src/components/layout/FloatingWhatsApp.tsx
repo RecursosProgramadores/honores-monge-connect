@@ -14,7 +14,7 @@ const sedes = [
   {
     name: "Sede Izaguirre",
     address: "Av. Carlos Izaguirre, San Martín de Porres",
-    whatsapp: "51979534160",
+    whatsapp: "51924720723",
     phone: "016515072",
     message: "Hola, me gustaría información sobre el Colegio Honores Monge - Sede Izaguirre",
   },
